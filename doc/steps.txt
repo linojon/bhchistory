@@ -1,0 +1,21 @@
+$ refinerycms bhchistory
+$ cd bhchistory/
+
+$ rails generate refinery:engine document title:string category:string subject:string doctype:string description:text date:date source:string image:image
+
+$ bundle install
+$ rails generate refinery:documents
+$ rake db:migrate
+$ rake db:seed
+
+
+
+
+=========================
+TO DO
+
+- attach images to documents not working?
+
+- document date optional (?)
+
+
