@@ -8,6 +8,19 @@ $ rails generate refinery:documents
 $ rake db:migrate
 $ rake db:seed
 
+$ git init
+etc
+
+gem 'haml-rails'
+
+gem 'heroku'
+group :development, :test do
+  gem 'sqlite3'
+end
+group :production do
+  gem 'thin'
+  gem 'pg'
+end
 
 
 

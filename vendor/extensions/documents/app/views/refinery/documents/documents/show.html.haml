@@ -1,0 +1,39 @@
+- content_for :body_content_title do
+  = @document.title
+
+
+- content_for :body_content_left do
+  %p
+    Title:
+    = @document.title
+  %p
+    Category:
+    = @document.category
+  %p
+    Subject:
+    = @document.subject
+  %p
+    Type:
+    = @document.doctype
+  %p
+    Description:
+    = @document.description
+  %p
+    Date:
+    = @document.date
+  %p
+    Source:
+    = @document.source
+  %p
+    Image:
+    = @document.image
+
+- content_for :body_content_right do
+  %aside
+    %h2= t('.other')
+    %ul#documents
+      - @documents.each do |document|
+        %li
+          = link_to document.title, refinery.documents_document_path(document)
+
+= render '/refinery/content_page'
