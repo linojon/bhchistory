@@ -11,20 +11,22 @@
   </div>
   
   <div class='field'>
+    <%= f.label :doctype -%>
+    <%#= f.text_field :doctype  -%>
+    <%= f.select :doctype, Refinery::Documents::Document::DOCTYPES  -%>
+
+  </div>
+  
+  <div class='field'>
     <%= f.label :category -%>
-    <%= f.text_field :category  -%>
+    <%#= f.text_field :category  -%>
+    <%= f.select :category, Refinery::Documents::Document::CATEGORIES  -%>
 
   </div>
   
   <div class='field'>
     <%= f.label :subject -%>
     <%= f.text_field :subject  -%>
-
-  </div>
-  
-  <div class='field'>
-    <%= f.label :doctype -%>
-    <%= f.text_field :doctype  -%>
 
   </div>
   
@@ -50,7 +52,7 @@
   
   <div class='field'>
     <%= f.label :date -%>
-    <%= f.date_select :date  -%>
+    <%= f.date_select :date, :include_blank => true, :start_year => 1850, :end_year => Time.now.year, :default => nil  -%>
 
   </div>
   
