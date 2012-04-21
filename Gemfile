@@ -10,6 +10,9 @@ end
 
 gem 'jquery-rails'
 gem 'haml-rails'
+gem 'simple_form'
+gem 'bootstrap-sass'
+
 gem 'heroku'
 
 group :development, :test do

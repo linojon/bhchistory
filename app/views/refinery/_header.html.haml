@@ -1,0 +1,6 @@
+#banner.container-fluid
+  .logo= link_to '', refinery.root_path
+  %h1= Refinery::Core.site_name
+
+
+= render partial: "/refinery/menu", locals: { dom_id: 'menu', css: 'menu' }

@@ -49,13 +49,68 @@ deploy
   
 
 
+Asset pipeline for css, simple_form, and bootstrap
+  change we want is originally in core/app/views/refinery/_head.html.erb
+ 
+  $ rake refinery:override view=refinery/_head
+  edit views/refinery/_head.html.erb
+    replace
+        <%= stylesheet_link_tag "application", "formatting", "theme" %>
+        <%= stylesheet_link_tag "home" if home_page? %>
+    with
+        <%= stylesheet_link_tag "application" %>
+        
+  edit assets/stylesheets/application.css
+
+  rename and edit views/refinery/_header.html.haml
+  
+
+gem 'simple_form'
+
+twitter bootstrap
+(walking thru RailsCast from LESS to Sass)
+
+Gemfile
+    gem 'twitter-bootstrap-rails'
+
+$ rails g bootstrap:install
+$ rails g simple_form:install --bootstrap
+
+tweaks to simple_form for bootstrap
+  https://github.com/plataformatec/simple_form/wiki/Twitter-Bootstrap-v2-and-simple_form-v2
+  config/initializers/simple_form.rb
+      config.form_class = 'simple_form form-horizontal'
+      
+
+using sass instead of less
+  Gemfile
+      gem 'bootstrap-sass'
+  rename bootstrap_and_overrides.css.less file to end in .scss
+    and edit for sass
+  application.js
+  remove javascripts/bootstrap.js.coffee
+
 
 =========================
 TO DO
+
+use simple_form
+  =>
+        Inside your views, use the 'simple_form_for' with one of the Bootstrap form
+        classes, '.form-horizontal', '.form-inline', '.form-search' or
+        '.form-vertical', as the following:
+
+          = simple_form_for(@user, :html => {:class => 'form-horizontal' }) do |form|
+  
+  
+- add scss and haml layout to pipeline
+- BHC header, some styling
 
 - attach images to documents not working?
 
 - document date: incomplete dates (year only, year/month only) defaults to January, 1
 
+- table view
+- sort table
 
 
