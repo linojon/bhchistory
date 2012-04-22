@@ -11,7 +11,7 @@
   <%= stylesheet_link_tag "application" %>
   <%= yield :stylesheets %>
 
-  <%= render '/refinery/google_analytics' %>
-
-  <%= javascript_include_tag 'modernizr-min' %>
+  <%#= render '/refinery/google_analytics' %>
+  <%#= javascript_include_tag 'modernizr-min' %>
+  <%= javascript_include_tag "application" %>
 </head>
