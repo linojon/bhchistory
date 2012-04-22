@@ -91,6 +91,31 @@ using sass instead of less
   remove javascripts/bootstrap.js.coffee
 
 
+----------
+Images
+    gem 'refinerycms-page-images', '~> 2.0.0'
+    
+  rails generate refinery:page_images
+  rake db:migrate
+  
+  models/refinery/documents/document.rb
+      has_many_page_images
+      
+  show.html.haml
+    %p
+      - @document.images.each do |image|
+        = link_to image_tag(image.thumbnail("200x200#c").url), image.url
+  _form.html.haml
+    - [:description, :images].each_with_index
+    - [:description, :images].each_with_index
+      .page_part{ id: part }
+        - if part == :images
+          = render partial: "/refinery/admin/pages/tabs/images", locals: { f: f }
+        - else
+          = f.text_area part, rows: 20, class: 'wymeditor widest'
+      
+  
+
 =========================
 TO DO
 

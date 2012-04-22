@@ -7,22 +7,21 @@
   = f.input :date, include_blank: true, start_year: 1850, end_year: Time.now.year, default: nil
   = f.input :source
   
-  
-  .field
-    = f.label :image
-    = render '/refinery/admin/image_picker', f: f, field: :image_id, image: @document.image, toggle_image_display: false
-
-  
   .field
     #page-tabs.clearfix.ui-tabs.ui-widget.ui-widget-content.ui-corner-all
       %ul#page_parts
-        - [:description].each_with_index do |part, part_index|
+        - [:description, :images].each_with_index do |part, part_index|
           %li{ class: "ui-state-default #{' ui-state-active' if part_index == 0}"}
             = link_to t("#{part}", scope: "activerecord.attributes.refinery/documents/document", default: part.to_s.titleize), "##{part}"
+            
       #page_part_editors
-        - [:description].each do |part|
+        - [:description, :images].each do |part|
           .page_part{ id: part }
-            = f.text_area part, rows: 20, class: 'wymeditor widest'
+            - if part == :images
+              = render partial: "/refinery/admin/pages/tabs/images", locals: { f: f }
+            - else
+              = f.text_area part, rows: 20, class: 'wymeditor widest'
+
 
   = render '/refinery/admin/form_actions', f: f, continue_editing: false, delete_title: t('delete', :scope => 'refinery.documents.admin.documents.document'), delete_confirmation: t('message', :scope => 'refinery.admin.delete', :title => @document.title)
 

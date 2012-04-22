@@ -4,36 +4,30 @@
 
 - content_for :body_content_left do
   %p
-    Title:
-    = @document.title
-  %p
-    Category:
+    %strong Category:
     = @document.category
   %p
-    Subject:
+    %strong Subject:
     = @document.subject
   %p
-    Type:
+    %strong Type:
     = @document.doctype
   %p
-    Description:
-    = @document.description
-  %p
-    Date:
+    %strong Date:
     = @document.date
   %p
-    Source:
+    %strong Source:
     = @document.source
   %p
-    Image:
-    = @document.image
+    %strong Description:
+  %div
+    = raw @document.description
 
 - content_for :body_content_right do
   %aside
-    %h2= t('.other')
-    %ul#documents
-      - @documents.each do |document|
-        %li
-          = link_to document.title, refinery.documents_document_path(document)
+    %p.italic Click to view full size:
+    %ul.images
+      - @document.images.each do |image|
+        %li= link_to image_tag(image.thumbnail("200x200#c").url), image.url
 
 = render '/refinery/content_page'

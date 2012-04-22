@@ -11,8 +11,9 @@ module Refinery
       validates :category, :inclusion => {:in => CATEGORIES}
       validates :doctype, :inclusion => {:in => DOCTYPES}
           
-      belongs_to :image, :class_name => '::Refinery::Image'
-        
+      attr_accessible :title, :doctype, :category, :subject, :date, :source, :description
+      
+      has_many_page_images
     end
   end
 end
